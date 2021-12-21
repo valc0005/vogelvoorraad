@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Producten') }}</div>
+                    <div class="card-header">{{ __('Nieuw product aanmaken') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -16,7 +16,7 @@
 
                             @if ($errors->any())
                                 <div class="alert alert-danger">
-                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                    <strong>Oeps!</strong> Er waren wat problemen met je input.<br><br>
                                     <ul>
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
@@ -30,37 +30,37 @@
 
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
+                                        <div class="form-group pb-2">
                                             <strong>Naam:</strong>
                                             <input type="text" name="name" class="form-control" placeholder="Naam">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>Detail:</strong>
+                                        <div class="form-group pb-2">
+                                            <strong>Details:</strong>
                                             <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
+                                        <div class="form-group pb-2">
                                             <strong>Productcode:</strong>
                                             <input class="form-control" name="productcode" placeholder="Productcode">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
-                                            <strong>Positie:</strong>
+                                        <div class="form-group pb-2">
+                                            <strong>Lijstpositie:</strong>
                                             <input class="form-control" name="position" placeholder="Positie">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                        <div class="form-group">
+                                        <div class="form-group pb-2">
                                             <strong>Categorie-id:</strong>
                                             <input class="form-control" name="category_id" placeholder="Categorie-id">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                        <button type="submit" class="btn btn-primary">Verzenden</button>
+                                        <button type="submit" class="btn btn-primary">Opslaan</button>
                                     </div>
                                 </div>
 

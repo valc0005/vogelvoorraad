@@ -12,4 +12,9 @@ class Product extends Model
     protected $fillable = [
         'name', 'detail', 'productcode', 'position', 'category_id'
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany('Category');
+    }
 }

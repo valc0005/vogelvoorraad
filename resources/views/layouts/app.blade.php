@@ -28,7 +28,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/home">
                     <img src="https://www.de-vogel.nl/ui/DeVogel/img/logo.webp" width="200" height="70" alt="">
                 </a>
 

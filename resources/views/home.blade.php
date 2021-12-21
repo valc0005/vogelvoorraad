@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('Je bent ingelogd!') }}
+                    <p>Welkom op het voorraadbeheersysteem van Recreatiecentrum de Vogel, {{auth()->user()->name }}.</p>
                 </div>
             </div>
         </div>
