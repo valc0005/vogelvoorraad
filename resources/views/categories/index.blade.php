@@ -19,7 +19,7 @@
 
                             <div class="d-flex flex-row-reverse">
                             <div class="float-right pb-3">
-                                <a class="btn btn-success" href="{{ route('categories.create') }}">Product toevoegen</a>
+                                <a class="btn btn-success" href="{{ route('categories.create') }}">Categorie toevoegen</a>
                             </div>
 
                             </div>
@@ -37,14 +37,12 @@
                                         <td>
                                             <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
 
-                                                <a class="btn btn-info" href="{{ route('categories.show',$category->id) }}">Show</a>
-
-                                                <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}">Edit</a>
+                                                <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}">Wijzigen</a>
 
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger">Verwijderen</button>
                                             </form>
                                         </td>
                                     </tr>

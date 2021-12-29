@@ -56,15 +56,28 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group pb-2">
-                                            <strong>Categorie-id:</strong>
-                                            <input class="form-control" name="positie" value="{{ $product->category_id }}">
+                                            <strong>Voorraadtotaal:</strong>
+                                            <input class="form-control" name="positie" value="{{ $product->totalstock }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group pb-2">
+                                            <strong>Categorieën</strong>
+                                            <div class="form-check">
+                                                @foreach($categories as $category)
+                                                    <input class="form-check-input" type="checkbox" name="category[]" value="{{$category->id}}" id="flexCheckDefault" {{ $product->categories()->get()->contains($category->id) ? 'checked' : null }}>
+                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                        {{ $category->name }}
+                                                    </label>
+                                                    <br>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                         <button type="submit" class="btn btn-primary">Opslaan</button>
                                     </div>
                                 </div>
-
                             </form>
                     </div>
                 </div>

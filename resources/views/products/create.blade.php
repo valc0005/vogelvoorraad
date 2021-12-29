@@ -55,15 +55,28 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group pb-2">
-                                            <strong>Categorie-id:</strong>
-                                            <input class="form-control" name="category_id" placeholder="Categorie-id">
+                                            <strong>Voorraadtotaal:</strong>
+                                            <input class="form-control" name="totalstock" placeholder="Vooraadtotaal">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group pb-2">
+                                            <strong>Categorieën:</strong>
+                                            <div class="form-check">
+                                                @foreach($categories as $category)
+                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                        <input class="form-check-input" name="category[]" type="checkbox" value="{{$category->id}}" id="flexCheckDefault"> {{ $category->name }}
+                                                    </label>
+                                                    <br>
+                                                @endforeach
+
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                         <button type="submit" class="btn btn-primary">Opslaan</button>
                                     </div>
                                 </div>
-
                             </form>
                     </div>
                 </div>

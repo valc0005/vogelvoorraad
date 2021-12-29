@@ -23,7 +23,7 @@
                             </div>
 
                             </div>
-
+                    <div class="table-responsive">
                             <table class="table table-bordered">
                                 <tr>
                                     <th>ID</th>
@@ -31,34 +31,33 @@
                                     <th>Details</th>
                                     <th>Productcode</th>
                                     <th>Lijstpositie</th>
-                                    <th>Categorie</th>
+                                    <th>Categorieën</th>
+                                    <th>Voorraadtotaal</th>
                                     <th width="280px">Actie</th>
                                 </tr>
                                 @foreach ($products as $product)
                                     <tr>
-                                        <td>{{ ++$i }}</td>
+                                        <td>{{ $product->id }}</td>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->detail }}</td>
                                         <td>{{ $product->productcode }}</td>
                                         <td>{{ $product->position }}</td>
-                                        <td>{{ $product->category_id}}</td>
+                                        <td>{{ $product->categories()->get()->pluck('name')->join(', ') }}</td>
+                                        <td>{{ $product->totalstock }}</td>
                                         <td>
                                             <form action="{{ route('products.destroy',$product->id) }}" method="POST">
-
-                                                <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Details</a>
-
-                                                <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Wijzig</a>
+                                                <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Wijzigen</a>
 
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" class="btn btn-danger">Verwijder</button>
+                                                <button type="submit" class="btn btn-danger">Verwijderen</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @endforeach
                             </table>
-
+                    </div>
                             {!! $products->links() !!}
 
                     </div>

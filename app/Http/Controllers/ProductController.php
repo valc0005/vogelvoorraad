@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::latest()->paginate(5);
+        $products = Product::with('categories')->latest()->paginate(5);
 
         return view('products.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -28,7 +28,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $categories = Category::All();
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -39,12 +40,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
-
-        Product::create($request->all());
+        $product = Product::create($request->all());
+        $product->categories()->sync($request->category);
 
         return redirect()->route('products.index')
             ->with('success','Product created successfully.');
@@ -69,7 +66,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit',compact('product'));
+        $categories = Category::All();
+        return view('products.edit', compact(['categories', 'product']));
     }
 
     /**
@@ -81,12 +79,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $request->validate([
-            'name' => 'required',
-            'detail' => 'required',
-        ]);
-
         $product->update($request->all());
+        $product->categories()->sync($request->category);
 
         return redirect()->route('products.index')
             ->with('success','Product updated successfully');
@@ -100,6 +94,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        foreach($product->categories()->get() as $category) {
+            $product->categories()->detach($category->id);
+        }
         $product->delete();
 
         return redirect()->route('products.index')
